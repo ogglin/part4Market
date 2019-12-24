@@ -1,0 +1,159 @@
+.search-form {
+  padding: 1em 6em 0 2em;
+  position: relative;
+  input {
+    background-color: #959499;
+    width: 100%;
+    padding: 0.4em 0.6em;
+    color: #29282B;
+    border: 1px solid;
+    font-size: 1em;
+  }
+  mat-icon {
+    color: #29282B;
+    position: absolute;
+    z-index: 9;
+    right: 3.5em;
+    top: 0.9em;
+    cursor: pointer;
+  }
+}
+.goods-card {
+  h4 {
+    height: 2em;
+    font-size: 1em;
+    padding: 0.4em 1em;
+    margin: 0;
+  }
+  h5 {
+    padding: 0.4em 1em;
+    margin: 0;
+  }
+  .image {
+    margin-top: 0.4em;
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .image-full {
+    width: 300px;
+    height: 300px;
+  }
+  .desc {
+    height: 2.4em;
+    overflow: hidden;
+  }
+  p {
+    padding: 0.4em 1em;
+    margin: 0;
+  }
+  .clickable {
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 3px 1px rgb(149, 148, 153, 0.5);
+    }
+  }
+}
+.search-result {
+  padding: 1em 0;
+  .image {
+    width: 200px;
+    height: 200px;
+    margin-top: 0.4em;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+.menu {
+  &-top {
+    position: absolute;
+    right: 3em;
+    top: 1em;
+  }
+}
+.dark-toggle-btn {
+  position: absolute !important;
+  top: 1em;
+  right: 1em;
+}
+.title {
+  cursor: pointer;
+  &:focus{outline: none}
+}
+.cabinet {
+  min-height: calc(100vh - 15em);
+}
+.form {
+  position: relative;
+  &-product-add {
+    mat-form-field {
+      width: 100%;
+      padding: 0.5em;
+    }
+  }
+  &-registration {
+    width: 50%;
+    margin: 2em auto;
+    min-width: 380px;
+    mat-form-field {
+      width: 100%;
+      padding: 0.5em;
+    }
+  }
+  &-sendmail {
+    margin: 1em auto;
+    mat-form-field {
+      width: 100%;
+      padding: 0.5em;
+    }
+  }
+  &-login {
+    width: 50%;
+    margin: 2em auto;
+    min-width: 380px;
+    mat-form-field {
+      width: 100%;
+      padding: 0.5em;
+    }
+  }
+}
+.category-grid {
+  padding: 2em 0;
+}
+.progress-bar {
+  width: 100%;
+  &-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.product {
+  .title {
+
+  }
+  .price {
+
+  }
+  .img {
+
+  }
+  .desc {
+
+  }
+  .gallery {
+    width: 350px;
+    height: 350px;
+  }
+}
+.form-product-add {
+  padding: 1em 0;
+}
+table {
+  tr {}
+  td {padding: 0.2em 0.4em; border: 1px solid #959499;}
+}
