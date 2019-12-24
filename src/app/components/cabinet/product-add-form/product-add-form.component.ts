@@ -5,6 +5,10 @@ import {map, startWith} from 'rxjs/operators';
 // @ts-ignore
 import {ListenerService, SocketApiService, UploadService} from '@app/_services';
 
+const y = new Date().getFullYear();
+const m = new Date().getMonth();
+const fpath = y + '/' + m + '/';
+
 @Component({
   selector: 'app-product-add-form',
   templateUrl: './product-add-form.component.html',
@@ -133,7 +137,7 @@ export class ProductAddFormComponent implements OnChanges {
 
   saveProduct() {
     this.files.forEach(f => {
-      this.images.push(f.name);
+      this.images.push(fpath + f.name);
     });
     const body = {
       putGoods: true,
@@ -155,7 +159,7 @@ export class ProductAddFormComponent implements OnChanges {
 
   editProduct() {
     this.files.forEach(f => {
-      this.images.push(f.name);
+      this.images.push(fpath + f.name);
     });
     this.categories.forEach(cat => {
       if (cat.name === this.body.category) {

@@ -3,6 +3,9 @@ import {ListenerService} from '../../_services/listener.service';
 import {Router} from '@angular/router';
 import {SocketApiService} from '../../_services/socket-api.service';
 
+// @ts-ignore
+import {environment} from '@environments/environment';
+
 @Component({
   selector: 'app-product-all',
   templateUrl: './product-all.component.html',
@@ -12,7 +15,7 @@ export class ProductAllComponent implements OnInit {
 
   allgoods: any[] = [];
   products: any[] = [];
-  path = '/assets/upload/';
+  path = environment.pathUpload;
 
   constructor(private listener: ListenerService, private router: Router, private sAPI: SocketApiService) {
     this.sAPI.getAllGoods();

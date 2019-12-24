@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Router} from '@angular/router';
+import {environment} from '@environments/environment';
 
 @Component({
   selector: 'app-product-card',
@@ -12,7 +13,7 @@ export class ProductCardComponent implements OnChanges {
   @Input() full: boolean;
   imgs: any[] = [];
   image: any;
-  path = '/assets/upload/';
+  path = environment.pathUpload;
 
   constructor(private router: Router) {
 

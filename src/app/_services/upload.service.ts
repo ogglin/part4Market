@@ -8,7 +8,8 @@ import {
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 
-const url = 'https://localhost:443/upload';
+// @ts-ignore
+import {environment} from '@environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class UploadService {
 
       // create a http-post request and pass the form
       // tell it to report the upload progress
-      const req = new HttpRequest('POST', url, formData, {
+      const req = new HttpRequest('POST', environment.apiUrl, formData, {
         reportProgress: true
       });
 
