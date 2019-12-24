@@ -1,0 +1,22 @@
+<div class="cabinet" fxLayout="row" fxLayoutAlign="start none" >
+
+<mat-sidenav-container class="container my-2 width-full">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <mat-list>
+      <mat-list-item> <button mat-button mat-raised-button (click)="toggleTab('profile')">
+        <mat-icon>account_circle</mat-icon> Профиль</button> </mat-list-item>
+      <mat-list-item> <button mat-button mat-raised-button (click)="toggleTab('classy')">
+        <mat-icon>list</mat-icon> Объявления</button> </mat-list-item>
+      <mat-list-item> <button mat-button mat-raised-button (click)="toggleTab('addclassy')">
+        <mat-icon>playlist_add</mat-icon> Добавить объявление</button> </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="px-2">
+    <button mat-button *ngIf="opened" mat-icon-button (click)="sidenav.toggle()"><mat-icon>arrow_back_ios</mat-icon></button>
+    <button mat-button *ngIf="!opened" mat-icon-button (click)="sidenav.toggle()"><mat-icon>arrow_forward_ios</mat-icon></button>
+    <app-product-add-form [isEdit]="false" [prodId]="0" *ngIf="tab === 'addclassy'"></app-product-add-form>
+    <app-profile *ngIf="tab === 'profile'"></app-profile>
+    <app-classy *ngIf="tab === 'classy'"></app-classy>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+</div>

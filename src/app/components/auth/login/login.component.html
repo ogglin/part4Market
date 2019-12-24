@@ -1,0 +1,24 @@
+<div class="form-login">
+  <form (ngSubmit)="logIn()" [formGroup]="loginForm">
+    <mat-form-field>
+      <input matInput type="text" formControlName="email" placeholder="Email" required>
+      <mat-error *ngIf="loginForm.controls.email.errors?.required">
+        Email <strong>обязателен</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" formControlName="password" placeholder="Пароль" required>
+      <mat-error *ngIf="loginForm.controls.password.errors?.required">
+        Пароль <strong>обязателен</strong>
+      </mat-error>
+    </mat-form-field>
+    <p *ngIf="sending">
+      <mat-progress-bar mode="buffer"></mat-progress-bar>
+    </p>
+    <p *ngIf="msg" class="text-color-red">{{msg}}</p>
+    <button mat-button mat-raised-button color="accent"
+            [disabled]="loginForm.status === 'INVALID' || sending"
+    >Сохранить
+    </button>
+  </form>
+</div>

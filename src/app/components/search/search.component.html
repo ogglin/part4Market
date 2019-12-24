@@ -1,0 +1,7 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly start" class="container">
+  <h2 class="nowrap title" [routerLink]="['/']">Part4 Market</h2>
+  <form class="search-form" fxFlex="grow">
+    <input type="text" placeholder="Найти" [(ngModel)]="searchValue" name="search" (keyup.enter)="$Search(searchValue)">
+    <mat-icon (click)="$Search(searchValue)">search</mat-icon>
+  </form>
+</div>

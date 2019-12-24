@@ -1,0 +1,23 @@
+<div class="container">
+  <ng-container *ngIf="!product">
+    <mat-progress-bar mode="buffer" class="progress-bar-top"></mat-progress-bar>
+  </ng-container>
+  <ng-container *ngIf="product">
+    <h2 class="title">{{product['title']}}</h2>
+    <div class="product" fxLayout="row" fxlayoutalign="start none" fxLayoutGap="2em">
+      <div>
+        <div class="gallery">
+          <app-image-gallery [images]="img"></app-image-gallery>
+        </div>
+      </div>
+      <div class="py">
+        <h3><span *ngIf="product.brand">{{product.brand}}</span>
+          <span *ngIf="product.model">{{product.model}}</span></h3>
+        <p class="price">Цена: {{product.price}}</p>
+        <p *ngIf="product.partcode">Парткод: {{product.partcode}}</p>
+        <p *ngIf="product.description">{{product.description}}</p>
+        <p *ngIf="product.options">{{product.options}}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,25 @@
+<table *ngIf="!isEdit">
+  <thead>
+  <tr>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Описание</th>
+    <th>Категория</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of userProducts">
+    <td>{{item.title}}</td>
+    <td>{{item.price}}</td>
+    <td>{{item.description}}</td>
+    <td>{{item.category}}</td>
+    <td>
+      <mat-icon class="cursor-pointer" color="accent" (click)="edit(item.id)">edit</mat-icon>
+      <mat-icon class="cursor-pointer" color="warn" (click)="delete(item.id)">delete</mat-icon>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button mat-button mat-raised-button *ngIf="isEdit" (click)="refresh(); isEdit = false">К списку</button>
+<app-product-add-form *ngIf="isEdit" [prodId]="prodId" [isEdit]="isEdit" [body]="body"></app-product-add-form>

@@ -1,0 +1,74 @@
+<h3>{{formTitle}}</h3>
+<div class="form-product-add">
+  <form [formGroup]="addForm" (ngSubmit)="uploadDialog()">
+    <mat-form-field>
+      <input matInput id="title" placeholder="Название" formControlName="title" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Цена" formControlName="price" mask="0*.00">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Парткод" formControlName="partcode">
+    </mat-form-field>
+    <mat-form-field class="">
+      <input type="text" placeholder="Категория" aria-label="Number" matInput formControlName="category"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of fCategory | async" [value]="option.name" (click)="setVal('cid', option.id)">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input type="text" placeholder="Бренд" aria-label="Number" matInput formControlName="brand"
+             [matAutocomplete]="auto1">
+      <mat-autocomplete #auto1="matAutocomplete">
+        <mat-option *ngFor="let option of fBrands | async" [value]="option.name" (click)="setVal('bid', option.id)">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="" *ngIf="models.length > 0">
+      <input type="text" placeholder="Модель" aria-label="Number" matInput formControlName="model"
+             [matAutocomplete]="auto2">
+      <mat-autocomplete #auto2="matAutocomplete">
+        <mat-option *ngFor="let option of fModels | async" [value]="option.name" (click)="setVal('mid', option.id)">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Описание" formControlName="desc"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Адрес" formControlName="address"></textarea>
+    </mat-form-field>
+
+    <input type="file" #file (change)="onFilesAdded()" style="display: none;" multiple/>
+    <a
+      mat-raised-button
+      color="primary"
+      class="add-files-btn"
+      (click)="addFiles()"
+    >
+      Добавить изображения
+    </a>
+    <div class="container py-2" fxLayout="column" fxLayoutAlign="start none">
+      <!-- This is the content of the dialog, containing a list of the files to upload -->
+      <p>{{success}}</p>
+      <mat-dialog-content fxFlex>
+        <mat-list>
+          <mat-list-item *ngFor="let file of files">
+            <h4 mat-line>{{file.name}} <mat-icon (click)="clearFiles(file.name)" class="cursor-pointer">close</mat-icon></h4>
+            <mat-progress-bar
+              *ngIf="progress"
+              mode="determinate"
+              [value]="progress[file.name].progress | async"
+            ></mat-progress-bar>
+          </mat-list-item>
+        </mat-list>
+      </mat-dialog-content>
+    </div>
+    <button mat-button mat-raised-button color="warn" type="submit" [disabled]="saving || addForm.controls.title.errors?.required">Сохранить</button>
+  </form>
+</div>

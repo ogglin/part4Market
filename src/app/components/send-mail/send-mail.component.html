@@ -1,0 +1,20 @@
+<div class="form-sendmail">
+  <form (ngSubmit)="sendMail()" [formGroup]="sendForm">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Email" formControlName="email" required>
+      <mat-error *ngIf="sendForm.controls.email.errors?.required">Обязательное поле</mat-error>
+      <mat-error *ngIf="sendForm.controls.email.errors?.pattern">Не верный email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Тема" formControlName="subject">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Сообщение" formControlName="text" required></textarea>
+      <mat-error *ngIf="sendForm.controls.text.errors?.required">Обязательное поле</mat-error>
+    </mat-form-field>
+    <p>
+      <mat-progress-bar mode="buffer" *ngIf="sending"></mat-progress-bar>
+    </p>
+    <button mat-button mat-raised-button [disabled]="sendForm.status === 'INVALID' || sending">Отправить</button>
+  </form>
+</div>

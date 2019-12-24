@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  SERVER_URL_GET: 'https://localhost:8443/get',
+  SERVER_URL_PUT: 'https://localhost:8443/put',
+  apiUrl: 'https://localhost:443'
+  /*SERVER_URL_GET: 'https://dev.api.part4.info:8443/get',
+  SERVER_URL_PUT: 'https://dev.api.part4.info:8443/put'*/
 };
 
 /*

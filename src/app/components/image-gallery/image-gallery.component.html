@@ -1,0 +1,13 @@
+<div class="image-gallery">
+  <button mat-button mat-icon-button color="accent" class="nav-prev" (click)="prev()" [disabled]="curImg === 0">
+    <mat-icon>arrow_back_ios</mat-icon></button>
+  <button mat-button mat-icon-button color="accent" class="nav-next" (click)="next()" [disabled]="curImg === allImg">
+    <mat-icon>arrow_forward_ios</mat-icon></button>
+  <ng-container *ngFor="let item of images; let i = index">
+    <div [ngClass]="i === curImg? 'item active':'item'" [ngStyle]="{'background-image': 'url(' +item+ ')'}">
+    </div>
+  </ng-container>
+  <div class="nav">
+    <button *ngFor="let item of images; let i = index" [disabled]="i === curImg" mat-button mat-icon-button color="warn" (click)="set(i)">{{i}}</button>
+  </div>
+</div>

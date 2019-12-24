@@ -1,0 +1,44 @@
+@import "assets/styles/offsets";
+footer {
+  height: 4em;
+}
+
+.container{
+  max-width: 1366px;
+  margin: 0 auto;
+  &-row {
+    max-width: 100%;
+    padding: 0 2em;
+  }
+}
+.height {
+  &-full {
+    min-height: 100vh !important;
+  }
+}
+.width {
+  &-full {
+    width: 100%;
+  }
+}
+.nowrap {
+  white-space: nowrap;
+}
+.text-color {
+  &-orange {color: darkorange; }
+  &-link {color: cadetblue;}
+  &-red {color: brown;}
+}
+
+.dark {
+  color: #959499;
+  background-color: #29282B;
+  .text-color {
+    &-orange {color: darkorange; }
+    &-link {color: cadetblue;}
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+@import "assets/styles/elements";

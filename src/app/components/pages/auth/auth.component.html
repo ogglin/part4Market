@@ -1,0 +1,3 @@
+<app-registration *ngIf="path === 'reg' || status === 'confirm'" [status]="status" [token]="token"></app-registration>
+<app-login *ngIf="path === 'login'"></app-login>
+<app-logout *ngIf="path === 'logout'"></app-logout>

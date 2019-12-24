@@ -1,0 +1,50 @@
+<ng-container *ngIf="status !== 'confirm'">
+  <div class="form-registration">
+    <form [formGroup]="regForm" (ngSubmit)="register()">
+      <mat-form-field>
+        <input matInput type="text" formControlName="login" placeholder="ФИО">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="email" placeholder="Email" required>
+        <mat-error *ngIf="regForm.controls.email.errors?.required">
+          Email <strong>обязателен</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" formControlName="password" placeholder="Пароль" required>
+        <mat-error *ngIf="regForm.controls.password.errors?.required">
+          Пароль <strong>обязателен</strong>
+        </mat-error>
+        <mat-error *ngIf="regForm.controls.password.errors?.minLength">
+          Пароль <strong>минимум из 6 символов</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" formControlName="repassword" placeholder="Повторите пароль" required>
+        <mat-error *ngIf="regForm.controls.repassword.errors?.required">
+          Повтор пароля <strong>обязателен</strong>
+        </mat-error>
+        <mat-error *ngIf="regForm.controls.password.errors?.minLength &&
+        regForm.controls.repassword.value !== regForm.controls.password.value">
+          Пароль и повтор пароля <strong>не одинаковые</strong>
+        </mat-error>
+      </mat-form-field>
+      <p *ngIf="sending">
+        <mat-progress-bar mode="buffer"></mat-progress-bar>
+      </p>
+      <p *ngIf="msg">{{msg}}</p>
+      <button mat-button mat-raised-button color="accent"
+              [disabled]="regForm.status === 'INVALID' ||
+        regForm.controls.repassword.value !== regForm.controls.password.value"
+      >Сохранить
+      </button>
+    </form>
+  </div>
+</ng-container>
+<ng-container *ngIf="status === 'confirm'">
+  <div class="container">
+    <p><mat-progress-bar *ngIf="sending" mode="indeterminate"></mat-progress-bar></p>
+    <p>{{msg}}</p>
+  </div>
+
+</ng-container>

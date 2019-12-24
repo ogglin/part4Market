@@ -1,0 +1,6 @@
+<h4>Топ товаров</h4>
+<div fxLayout='row' fxLayoutGap="2em" class="py-2">
+  <div fxFlex="15em" *ngFor="let product of topGoods">
+    <app-product-card [product]="product" [full]="false"></app-product-card>
+  </div>
+</div>
