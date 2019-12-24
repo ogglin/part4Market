@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 // @ts-ignore
 import {ListenerService, SocketApiService} from '@app/_services';
+import {environment} from '@environments/environment';
 
 @Component({
   selector: 'app-product-view',
@@ -15,7 +16,7 @@ export class ProductViewComponent implements OnInit {
   id: any;
   product: any;
   img: any[] = [];
-  path = '/assets/upload/';
+  path = environment.pathUpload;
 
   constructor(private route: ActivatedRoute, private sAPI: SocketApiService, private listener: ListenerService) {
     listener.$getEvent().subscribe(msg => {

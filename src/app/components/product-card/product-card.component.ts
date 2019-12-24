@@ -29,7 +29,7 @@ export class ProductCardComponent implements OnChanges {
   }
 
   setImages(images) {
-    this.imgs = images.split(';');
+    this.imgs = images.split(',');
     this.image = this.path + this.imgs[0];
   }
 
