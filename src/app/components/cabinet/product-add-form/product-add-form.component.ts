@@ -150,8 +150,8 @@ export class ProductAddFormComponent implements OnChanges {
       category_id: this.cid,
       brand_id: this.bid,
       model_id: this.mid,
-      type: null,
-      options: null,
+      type: '',
+      options: '',
       partcode: this.addForm.controls.partcode.value
     };
     this.sAPI.putProduct(body);
@@ -188,8 +188,8 @@ export class ProductAddFormComponent implements OnChanges {
       category_id: this.cid,
       brand_id: this.bid,
       model_id: this.mid,
-      type: null,
-      options: null,
+      type: '',
+      options: '',
       partcode: this.addForm.controls.partcode.value
     };
     this.sAPI.putProduct(body);
