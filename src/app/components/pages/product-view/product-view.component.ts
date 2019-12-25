@@ -24,7 +24,7 @@ export class ProductViewComponent implements OnInit {
         this.product = msg.product[0];
         console.log(this.product);
         if (this.product.images) {
-          const imgs = this.product.images.split(';');
+          const imgs = this.product.images.split(',');
           imgs.forEach(i => {
             this.img.push(this.path + i.trim());
           });

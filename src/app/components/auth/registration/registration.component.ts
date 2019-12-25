@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnChanges {
   sending: boolean;
   msg: string;
   constructor(private sAPI: SocketApiService, private listener: ListenerService) {
-    listener.$getEvent().subscribe(msg => {
+    listener.$putEvent().subscribe(msg => {
       if (msg.mail_send_reg) {
         const obj = msg.mail_send_reg;
         console.log(obj);

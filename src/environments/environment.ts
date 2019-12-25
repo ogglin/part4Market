@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   SERVER_URL_GET: 'https://localhost:8443/get',
   SERVER_URL_PUT: 'https://localhost:8443/put',
-  apiUrl: 'https://localhost:8443',
+  apiUrl: 'https://localhost:8443/upload',
   pathUpload: '/assets/upload/'
   /*SERVER_URL_GET: 'https://dev.api.part4.info:8443/get',
   SERVER_URL_PUT: 'https://dev.api.part4.info:8443/put'*/

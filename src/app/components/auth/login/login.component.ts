@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/cabinet']);
       }
     }
-    listener.$getEvent().subscribe(msg => {
+    listener.$putEvent().subscribe(msg => {
+      console.log(msg);
       if (msg.auth_token) {
         this.sending = false;
         localStorage.removeItem('user');

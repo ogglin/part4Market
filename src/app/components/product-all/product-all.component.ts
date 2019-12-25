@@ -27,7 +27,7 @@ export class ProductAllComponent implements OnInit {
         this.allgoods.forEach(g => {
           let imgs = [];
           if (g.images) {
-            imgs = g.images.split(';');
+            imgs = g.images.split(',');
           } else {
             imgs.push('no-image.jpg');
           }

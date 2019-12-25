@@ -29,7 +29,7 @@ export class AuthenticationService {
     this.currentToken = this.currentTokenSubject.asObservable();
     this.validToken = this.validTokenSubject.asObservable();
     this.validateToken();
-    listener.$getEvent().subscribe(msg => {
+    listener.$putEvent().subscribe(msg => {
       if (msg.auth_email) {
         if (msg.auth_email[0].authorize_login !== 'error') {
           const token = {
