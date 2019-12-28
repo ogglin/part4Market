@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
       }
     }
     listener.$putEvent().subscribe(msg => {
-      console.log(msg);
       if (msg.auth_token) {
+        console.log(msg);
         this.sending = false;
         localStorage.removeItem('user');
         localStorage.setItem('user', JSON.stringify(msg.auth_token[0]));

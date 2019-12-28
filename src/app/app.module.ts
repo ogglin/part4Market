@@ -46,15 +46,12 @@ import { ProfileComponent } from './components/cabinet/profile/profile.component
 import { ClassyComponent } from './components/cabinet/classy/classy.component';
 import { SendMailComponent } from './components/send-mail/send-mail.component';
 import {CookieService} from 'ngx-cookie-service';
-// @ts-ignore
 import {ErrorInterceptor} from '@app/_helpers/error.interceptor';
-// @ts-ignore
 import {JwtInterceptor} from '@app/_helpers/jwt.interceptor';
-// @ts-ignore
 import {AuthGuard} from '@app/_helpers';
-// @ts-ignore
 import {fakeBackendProvider} from '@app/_helpers/fake-backend';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
+import {CarouselModule} from 'primeng';
 
 const material = [
   MatDatepickerModule,
@@ -65,7 +62,8 @@ const material = [
   MatProgressBarModule,
   MatListModule,
   MatDialogModule,
-  MatCardModule
+  MatCardModule,
+  CarouselModule
 ];
 
 const routes: Routes = [
@@ -111,7 +109,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     SendMailComponent,
     ImageGalleryComponent
   ],
-  exports: [],
+  exports: [CarouselModule],
   entryComponents: [],
     imports: [
         RouterModule.forRoot(

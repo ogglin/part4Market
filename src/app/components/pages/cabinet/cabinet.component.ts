@@ -12,14 +12,13 @@ export class CabinetComponent implements OnInit {
 
   opened: boolean;
   tab = 'profile';
+  cmp = 'list';
 
   constructor(private sAPI: SocketApiService, private listener: ListenerService, private route: ActivatedRoute, private router: Router) {
     this.route
       .queryParams
       .subscribe(queryParams => {
-        console.log('Query Params:', queryParams);
-        this.tab = queryParams.path;
-        console.log(this.tab);
+        this.tab = queryParams.tab;
       });
     this.opened = true;
   }
@@ -30,13 +29,17 @@ export class CabinetComponent implements OnInit {
   toggleTab(e) {
     switch (e) {
       case 'profile':
-        this.router.navigate(['cabinet'], {queryParams: {path: 'profile'}});
+        this.router.navigate(['cabinet'], {queryParams: {tab: 'profile'}});
         break;
       case 'classy':
-        this.router.navigate(['cabinet'], {queryParams: {path: 'classy'}});
+        this.router.navigate(['cabinet'], {queryParams: {tab: 'classy'}});
+        this.cmp = '-';
+        setTimeout(() => {
+          this.cmp = 'list';
+        }, 100);
         break;
       case 'addclassy':
-        this.router.navigate(['cabinet'], {queryParams: {path: 'addclassy'}});
+        this.router.navigate(['cabinet'], {queryParams: {tab: 'addclassy'}});
         break;
     }
   }

@@ -11,8 +11,6 @@ export class ProductCardComponent implements OnChanges {
 
   @Input() product: any;
   @Input() full: boolean;
-  imgs: any[] = [];
-  image: any;
   path = environment.pathUpload;
 
   constructor(private router: Router) {
@@ -21,16 +19,6 @@ export class ProductCardComponent implements OnChanges {
 
   ngOnChanges(change: SimpleChanges) {
     this.product = change.product.currentValue;
-    if (this.product.images) {
-      this.setImages(this.product.images);
-    } else {
-      this.image = '/assets/img/no-image.jpg';
-    }
-  }
-
-  setImages(images) {
-    this.imgs = images.split(',');
-    this.image = this.path + this.imgs[0];
   }
 
   goToProduct() {

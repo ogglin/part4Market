@@ -1,2 +1,5 @@
 <h4>Профиль</h4>
-<app-send-mail></app-send-mail>
+<h3>{{user.username}}</h3>
+<p>{{user.email}}</p>
+
+<app-send-mail [mailType]="'support'"></app-send-mail>

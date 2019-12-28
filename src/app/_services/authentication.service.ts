@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 
@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
+  @Output() isGetLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
   private currentTokenSubject: BehaviorSubject<string>;
   public currentToken: Observable<string>;
   public validTokenSubject: BehaviorSubject<boolean>;
@@ -39,6 +40,7 @@ export class AuthenticationService {
           cookie.set('token', JSON.stringify(token));
           localStorage.setItem('token', JSON.stringify(token));
           this.currentTokenSubject.next(msg.auth_email[0].authorize_login);
+          this.isGetLogin.emit(true);
           this.sAPI.sendAuthToken(msg.auth_email[0].authorize_login);
         }
       }
@@ -58,6 +60,7 @@ export class AuthenticationService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.currentTokenSubject.next(null);
+    this.isGetLogin.emit(false);
     this.router.navigate(['/']);
   }
 

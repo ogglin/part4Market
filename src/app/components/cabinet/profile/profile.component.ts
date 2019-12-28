@@ -10,6 +10,7 @@ import {ListenerService} from '@app/_services';
 export class ProfileComponent implements OnInit {
 
   mails: any[];
+  user: any;
 
   constructor(private sAPI: SocketApiService, private listener: ListenerService) {
     this.listener.$getEvent().subscribe(msg => {
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
 }

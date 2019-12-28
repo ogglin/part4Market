@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {ListenerService} from './_services/listener.service';
+import {ListenerService} from '@app/_services';
 import {CookieService} from 'ngx-cookie-service';
 
 @Component({

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ListenerService, SocketApiService} from '@app/_services';
 
 @Component({
@@ -6,8 +6,9 @@ import {ListenerService, SocketApiService} from '@app/_services';
   templateUrl: './classy.component.html',
   styleUrls: ['./classy.component.css']
 })
-export class ClassyComponent implements OnInit {
+export class ClassyComponent implements OnChanges {
 
+  @Input() cmp: string;
   uid: number;
   userProducts: any[] = [];
   isEdit = false;
@@ -25,7 +26,14 @@ export class ClassyComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnChanges(change: SimpleChanges) {
+    console.log(change);
+    if (change.cmp.currentValue) {
+      this.cmp = change.cmp.currentValue;
+      if (this.cmp === 'list') {
+        this.isEdit = false;
+      }
+    }
   }
 
   refresh() {

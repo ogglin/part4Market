@@ -1,6 +1,7 @@
+<h3 *ngIf="hidemail">Написать в техподдержку</h3>
 <div class="form-sendmail">
   <form (ngSubmit)="sendMail()" [formGroup]="sendForm">
-    <mat-form-field>
+    <mat-form-field *ngIf="!hidemail">
       <input matInput type="text" placeholder="Email" formControlName="email" required>
       <mat-error *ngIf="sendForm.controls.email.errors?.required">Обязательное поле</mat-error>
       <mat-error *ngIf="sendForm.controls.email.errors?.pattern">Не верный email</mat-error>

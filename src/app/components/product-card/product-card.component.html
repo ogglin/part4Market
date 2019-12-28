@@ -1,23 +1,31 @@
-<div class="goods-card">
-  <ng-container *ngIf="full">
-    <div class="image image-full" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
+<ng-container *ngIf="full">
+  <div class="product-card" (click)="goToProduct()">
+    <h4 class="title">{{product.title}}</h4>
+    <div class="px">
+      <div *ngIf="product.images" class="image"
+           [ngStyle]="{'background-image': 'url(' + path + product.images[0] + ')'}">
+      </div>
+      <div *ngIf="!product.images" class="image"
+           [ngStyle]="{'background-image': 'url(/assets/img/no-image.jpg)'}"></div>
+      <div class="content float-left">
+        <p class="category">{{product.category}}</p>
+        <p class="model">{{product.brand}} / {{product.model}}</p>
+        <p class="partcode">Парткод: {{product.partcode}}</p>
+        <p class="price">Цена: {{product.price}}</p>
+        <p class="desc">{{product.description}}</p>
+        <p class="address">{{product.address}}</p>
+        <p class="options">{{product.options}}</p>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!full">
+  <div class="clickable small-card" (click)="goToProduct()">
+    <div *ngIf="product.images" class="image"
+         [ngStyle]="{'background-image': 'url(' + path + product.images[0] + ')'}"></div>
+    <div *ngIf="!product.images" class="image" [ngStyle]="{'background-image': 'url(/assets/img/no-image.jpg)'}"></div>
     <p>{{product.price}} ₽</p>
     <h4><small>{{product.partcode}} </small> {{product.title}}</h4>
-    <h5>{{product.category}}</h5>
-    <p>
-      {{product.brand}} / {{product.model}}
-    </p>
-    <p class="desc">{{product.description}}</p>
-    <p>
-      <button mat-button mat-raised-button color="warn" (click)="goToProduct()">Перейти</button>
-    </p>
-  </ng-container>
+  </div>
+</ng-container>
 
-  <ng-container *ngIf="!full">
-    <div class="clickable" (click)="goToProduct()">
-      <div class="image" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
-      <p>{{product.price}} ₽</p>
-      <h4><small>{{product.partcode}} </small> {{product.title}}</h4>
-    </div>
-  </ng-container>
-</div>

@@ -1,6 +1,11 @@
 <h4>Топ товаров</h4>
-<div fxLayout='row' fxLayoutGap="2em" class="py-2">
-  <div fxFlex="15em" *ngFor="let product of topGoods">
-    <app-product-card [product]="product" [full]="false"></app-product-card>
-  </div>
+<div class="carousel">
+  <p-carousel *ngIf="topGoods.length > 0" [value]="topGoods" [numVisible]="5" [numScroll]="5"
+              [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+      <div class="p-grid p-nogutter">
+        <app-product-card [product]="product" [full]="false"></app-product-card>
+      </div>
+    </ng-template>
+  </p-carousel>
 </div>

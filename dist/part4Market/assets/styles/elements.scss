@@ -13,58 +13,9 @@
     color: #29282B;
     position: absolute;
     z-index: 9;
-    right: 3.5em;
+    right: 4.5em;
     top: 0.9em;
     cursor: pointer;
-  }
-}
-.goods-card {
-  h4 {
-    height: 2em;
-    font-size: 1em;
-    padding: 0.4em 1em;
-    margin: 0;
-  }
-  h5 {
-    padding: 0.4em 1em;
-    margin: 0;
-  }
-  .image {
-    margin-top: 0.4em;
-    height: 200px;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  .image-full {
-    width: 300px;
-    height: 300px;
-  }
-  .desc {
-    height: 2.4em;
-    overflow: hidden;
-  }
-  p {
-    padding: 0.4em 1em;
-    margin: 0;
-  }
-  .clickable {
-    cursor: pointer;
-    &:hover {
-      box-shadow: 0 0 3px 1px rgb(149, 148, 153, 0.5);
-    }
-  }
-}
-.search-result {
-  padding: 1em 0;
-  .image {
-    width: 200px;
-    height: 200px;
-    margin-top: 0.4em;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 }
 .menu {
@@ -84,7 +35,20 @@
   &:focus{outline: none}
 }
 .cabinet {
+  position: relative;
   min-height: calc(100vh - 15em);
+  .open {
+    left: 0em;
+    position: absolute;
+    z-index: 2;
+    top: 1em;
+  }
+  .close {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+  }
 }
 .form {
   position: relative;
@@ -134,7 +98,7 @@
 }
 .product {
   .title {
-
+    color: #4A738C;
   }
   .price {
 
@@ -153,7 +117,62 @@
 .form-product-add {
   padding: 1em 0;
 }
+.carousel {
+  overflow: hidden;
+}
 table {
+  width: 100%;
   tr {}
   td {padding: 0.2em 0.4em; border: 1px solid #959499;}
+}
+.product-list {
+  width: 100%;
+}
+.product-card {
+  cursor: pointer;
+  width: 48%;
+  margin: 1%;
+  float: left;
+  background-color: #0E151A;
+  box-shadow: 0 0 0 1px rgba(240,240,240,0.5);
+  display: block;
+  height: 300px;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 0 0 3px 1px #F6F6F1;
+  }
+  .title {
+    cursor: auto;
+    margin: 0.5em;
+  }
+  .image {
+    width: 200px;
+    height: 200px;
+    float: left;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .content {
+    padding: 0 0.5em;
+    width: calc(100% - 200px);
+  }
+}
+.small-card {
+  display: flex;
+  flex-direction: column;
+  .image {
+    width: 200px;
+    height: 200px;
+    float: left;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 1200px) {
+  .product-card {
+    width: 98%;
+  }
 }

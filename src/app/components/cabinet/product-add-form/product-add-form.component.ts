@@ -157,25 +157,35 @@ export class ProductAddFormComponent implements OnChanges {
     this.sAPI.putProduct(body);
   }
 
+  f() {
+    return this.addForm.controls;
+  }
   editProduct() {
-    this.files.forEach(f => {
-      this.images.push(fpath + f.name);
+    const f = this.f();
+    this.files.forEach(fl => {
+      this.images.push(fpath + fl.name);
     });
-    this.categories.forEach(cat => {
-      if (cat.name === this.body.category) {
-        this.cid = cat.id;
-      }
-    });
-    this.brands.forEach(b => {
-      if (b.name === this.body.brand) {
-        this.bid = b.id;
-      }
-    });
-    this.models.forEach(m => {
-      if (m.name === this.body.model) {
-        this.mid = m.id;
-      }
-    });
+    if (f.category.value && f.category.value === '') {
+      this.categories.forEach(cat => {
+        if (cat.name === this.body.category) {
+          this.cid = cat.id;
+        }
+      });
+    }
+    if (f.brand.value && f.brand.value === '') {
+      this.brands.forEach(b => {
+        if (b.name === this.body.brand) {
+          this.bid = b.id;
+        }
+      });
+    }
+    if (f.model.value && f.model.value === '') {
+      this.models.forEach(m => {
+        if (m.name === this.body.model) {
+          this.mid = m.id;
+        }
+      });
+    }
     const body = {
       editGoods: true,
       prod_id: this.prodId,

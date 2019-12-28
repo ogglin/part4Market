@@ -24,6 +24,10 @@ footer {
 .nowrap {
   white-space: nowrap;
 }
+.float {
+  &-left {float: left;}
+  &-right {float: right;}
+}
 .text-color {
   &-orange {color: darkorange; }
   &-link {color: cadetblue;}
@@ -32,7 +36,7 @@ footer {
 
 .dark {
   color: #959499;
-  background-color: #29282B;
+  background-color: #152027;
   .text-color {
     &-orange {color: darkorange; }
     &-link {color: cadetblue;}
@@ -41,4 +45,14 @@ footer {
 .cursor-pointer {
   cursor: pointer;
 }
+
+/*4A738C - QUEEN BLUE
+3D5F73 - DEEP SPACE SPARKLE
+152027 - DARK JUNGLE GREEN
+0E151A - EERIE BLACK
+ C95000 - BURNT ORANGE*/
+.text-color {
+  &-queen-blue {}
+}
+
 @import "assets/styles/elements";

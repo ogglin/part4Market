@@ -1,14 +1,5 @@
-<div *ngFor="let item of products" class="search-result" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="1em">
-  <div *ngIf="item.images" class="image" [ngStyle]="{'background-image': 'url(' + path + item.images[0] + ')'}" fxFlex="200px"></div>
-  <div fxFlex="calc(50% - 150px)">
-    <h4 class="title">{{item.title}}</h4>
-    <h5>{{item.category}}</h5>
-    <p>{{item.brand}} / {{item.model}}</p>
-    <p>{{item.description}}</p>
-  </div>
-  <div fxFlex="calc(50% - 150px)">
-    <p class="price">{{item.price}}</p>
-    <p class="address">{{item.address}}</p>
-    <p>{{item.options}}</p>
+<div class="product-list">
+  <div *ngFor="let product of products">
+    <app-product-card [product]="product" [full]="true"></app-product-card>
   </div>
 </div>
