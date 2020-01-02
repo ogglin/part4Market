@@ -1,6 +1,6 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {ListenerService} from '../../_services/listener.service';
-import {SocketApiService} from '../../_services/socket-api.service';
+import {Component, OnInit} from '@angular/core';
+import {ListenerService, SocketApiService} from '@app/_services';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-nav-category',
@@ -10,13 +10,20 @@ import {SocketApiService} from '../../_services/socket-api.service';
 export class NavCategoryComponent implements OnInit {
 
   categories: any[] = [];
-  constructor(private listener: ListenerService, private sAPI: SocketApiService) {
+  curCat: number;
+  constructor(private listener: ListenerService, private route: ActivatedRoute, private sAPI: SocketApiService) {
     this.sAPI.getCategories();
     listener.$getEvent().subscribe(msg => {
       if (msg.categories) {
         this.categories = msg.categories;
       }
     });
+    this.route
+      .queryParams
+      .subscribe(queryParams => {
+        this.curCat = parseInt(queryParams.id, 10);
+        console.log(queryParams, this.curCat);
+      });
   }
 
   ngOnInit() {

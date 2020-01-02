@@ -1,6 +1,6 @@
-<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1em">
-  <a mat-button mat-flat-button *ngFor="let item of categories"
-     class="text-color-link mx"
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1em" class="nav-menu">
+  <a *ngFor="let item of categories"
+     [ngClass]="[curCat === item.id? 'text-color-link mx active': 'text-color-link mx']"
      [routerLink]="['/category']"
      [queryParams]="{id: item.id}">
     {{item.name}}

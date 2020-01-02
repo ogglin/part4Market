@@ -13,7 +13,7 @@ export class AppComponent {
   @Output() event = new EventEmitter<any>();
 
   constructor(private listener: ListenerService, private cookie: CookieService) {
-    this.dark = true;
+    this.dark = false;
     listener.$getEvent().subscribe(msg => {
       this.event.emit(msg);
     });

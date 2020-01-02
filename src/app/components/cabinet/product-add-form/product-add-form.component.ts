@@ -41,6 +41,7 @@ export class ProductAddFormComponent implements OnChanges {
   uid: number;
   images: any[] = [];
   formTitle = 'Добавить объявление';
+  showModels: boolean;
   addForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     price: new FormControl(null),
@@ -53,6 +54,7 @@ export class ProductAddFormComponent implements OnChanges {
   });
 
   constructor(private sAPI: SocketApiService, public uploadService: UploadService, private listener: ListenerService) {
+    this.showModels = false;
     this.uid = JSON.parse(localStorage.getItem('user')).id;
     this.sAPI.getCategories();
     this.sAPI.getBrands();
@@ -63,6 +65,7 @@ export class ProductAddFormComponent implements OnChanges {
       }
       if (msg.models) {
         this.models = msg.models;
+        console.log(this.models);
       }
       if (msg.categories) {
         this.categories = msg.categories;
@@ -124,6 +127,9 @@ export class ProductAddFormComponent implements OnChanges {
         break;
       case 'cid':
         this.cid = id;
+        if (this.cid === 1 || this.cid === 2 || this.cid === 3) {
+          this.showModels = true;
+        } else { this.showModels = false; }
         break;
       default:
         break;

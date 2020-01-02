@@ -9,7 +9,6 @@ export class DataStandardizedService {
   constructor() { }
 
   public standardizeProduct(data): Observable<any> {
-    console.log(data);
     return new Observable<any> (observer => {
       const products = [];
       data.forEach(g => {
@@ -35,7 +34,6 @@ export class DataStandardizedService {
           partcode: g.partcode
         });
       });
-      console.log(products);
       observer.next(products);
     });
   }

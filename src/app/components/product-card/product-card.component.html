@@ -1,6 +1,6 @@
 <ng-container *ngIf="full">
-  <div class="product-card" (click)="goToProduct()">
-    <h4 class="title">{{product.title}}</h4>
+  <div class="product-card">
+    <h4 class="title" (click)="goToProduct()">{{product.title}}</h4>
     <div class="px">
       <div *ngIf="product.images" class="image"
            [ngStyle]="{'background-image': 'url(' + path + product.images[0] + ')'}">
@@ -10,22 +10,32 @@
       <div class="content float-left">
         <p class="category">{{product.category}}</p>
         <p class="model">{{product.brand}} / {{product.model}}</p>
-        <p class="partcode">Парткод: {{product.partcode}}</p>
-        <p class="price">Цена: {{product.price}}</p>
+        <p class="partcode">Парткод: <span class="text-color-link">{{product.partcode}}</span></p>
+        <p class="price">Цена: <span style="font-weight: 600">{{product.price}}</span></p>
+        <p class="address"><span class="text-color-link">{{product.address}}</span></p>
         <p class="desc">{{product.description}}</p>
-        <p class="address">{{product.address}}</p>
         <p class="options">{{product.options}}</p>
       </div>
     </div>
+    <span class="btn-group">
+      <i class="pi pi-sliders-v active"></i>
+      <i class="pi pi-bookmark"></i>
+    </span>
   </div>
 </ng-container>
 <ng-container *ngIf="!full">
-  <div class="clickable small-card" (click)="goToProduct()">
-    <div *ngIf="product.images" class="image"
+  <div class="clickable small-card">
+    <div *ngIf="product.images" class="image" (click)="goToProduct()"
          [ngStyle]="{'background-image': 'url(' + path + product.images[0] + ')'}"></div>
     <div *ngIf="!product.images" class="image" [ngStyle]="{'background-image': 'url(/assets/img/no-image.jpg)'}"></div>
-    <p>{{product.price}} ₽</p>
-    <h4><small>{{product.partcode}} </small> {{product.title}}</h4>
+    <p>{{product.price}} ₽
+      <span class="btn-group">
+        <i class="pi pi-sliders-v active"></i>
+        <i class="pi pi-bookmark"></i>
+      </span>
+    </p>
+    <p class="text-color-link"><strong>{{product.partcode}}</strong></p>
+    <h4 (click)="goToProduct()">{{product.title}}</h4>
   </div>
 </ng-container>
 

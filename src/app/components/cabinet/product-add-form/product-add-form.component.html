@@ -2,13 +2,7 @@
 <div class="form-product-add">
   <form [formGroup]="addForm" (ngSubmit)="uploadDialog()">
     <mat-form-field>
-      <input matInput id="title" placeholder="Название" formControlName="title" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Цена" formControlName="price" mask="0*.00">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Парткод" formControlName="partcode">
+      <input matInput id="title" placeholder="Заголовок объявления" formControlName="title" required>
     </mat-form-field>
     <mat-form-field class="">
       <input type="text" placeholder="Категория" aria-label="Number" matInput formControlName="category"
@@ -28,7 +22,7 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-form-field class="" *ngIf="models.length > 0">
+    <mat-form-field class="" *ngIf="models.length > 0 && showModels">
       <input type="text" placeholder="Модель" aria-label="Number" matInput formControlName="model"
              [matAutocomplete]="auto2">
       <mat-autocomplete #auto2="matAutocomplete">
@@ -37,8 +31,14 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <mat-form-field *ngIf="cid === 4">
+      <input matInput placeholder="Парткод" formControlName="partcode">
+    </mat-form-field>
     <mat-form-field>
       <textarea matInput placeholder="Описание" formControlName="desc"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Цена" formControlName="price" mask="0*.00">
     </mat-form-field>
     <mat-form-field>
       <textarea matInput placeholder="Адрес" formControlName="address"></textarea>

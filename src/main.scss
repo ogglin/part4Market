@@ -30,7 +30,15 @@ footer {
 }
 .text-color {
   &-orange {color: darkorange; }
-  &-link {color: cadetblue;}
+  &-link {
+    color: #008DD2;
+    &.active {
+      color: darkblue;
+    }
+    &:hover {
+      color: darkblue;
+    }
+  }
   &-red {color: brown;}
 }
 
